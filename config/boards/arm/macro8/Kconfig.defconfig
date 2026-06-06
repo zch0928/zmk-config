@@ -1,0 +1,3 @@
+if BOARD_MACRO8
+# Board defaults are defined in macro8_defconfig.
+endif
