@@ -8,37 +8,25 @@
         macro_claude: macro_claude {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp C>, <&kp L>, <&kp A>, <&kp U>, <&kp D>, <&kp E>, <&kp RET>;
+            bindings = <&kp C &kp L &kp A &kp U &kp D &kp E &kp RET>;
         };
 
         macro_zhcn: macro_zhcn {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(V)>, <&kp RET>;
+            bindings = <&kp LC(V) &kp RET>;
         };
 
         macro_git: macro_git {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings
-                = <&kp G>, <&kp I>, <&kp T>
-                , <&kp SPACE>
-                , <&kp A>, <&kp D>, <&kp D>
-                , <&kp SPACE>, <&kp DOT>, <&kp RET>
-                ;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT &kp RET>;
         };
 
         macro_npm: macro_npm {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings
-                = <&kp N>, <&kp P>, <&kp M>
-                , <&kp SPACE>
-                , <&kp R>, <&kp U>, <&kp N>
-                , <&kp SPACE>
-                , <&kp D>, <&kp E>, <&kp V>
-                , <&kp RET>
-                ;
+            bindings = <&kp N &kp P &kp M &kp SPACE &kp R &kp U &kp N &kp SPACE &kp D &kp E &kp V &kp RET>;
         };
     };
 
