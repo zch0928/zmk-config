@@ -34,7 +34,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            bindings = 
+            bindings = <
                 &macro_claude  &macro_zhcn  &macro_git   &macro_npm
                 &kp C_VOL_DN   &kp C_VOL_UP &kp C_MUTE   &out OUT_TOG
             >;
