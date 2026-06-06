@@ -16,7 +16,6 @@
         zmk,underglow = &led_strip;
     };
 
-    /* 按键矩阵变换（8键，4×2布局）*/
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <4>;
@@ -27,55 +26,30 @@
         >;
     };
 
-    /* 按键扫描（直连GPIO）*/
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "KSCAN";
         input-gpios
-            = <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K1 P1.11 Pin1  */
-            , <&gpio1 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K2 P1.10 Pin2  */
-            , <&gpio0  3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K3 P0.03 Pin3  */
-            , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K4 P1.13 Pin7  */
-            , <&gpio0 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K5 P0.13 Pin33 */
-            , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K6 P0.22 Pin34 */
-            , <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K7 P0.24 Pin35 */
-            , <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* K8 P1.00 Pin36 */
+            = <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0  3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
     };
 
-    /* 模式切换键 */
-    mode_button: mode_button {
-        compatible = "gpio-keys";
-        mode_key: mode_key {
-            gpios = <&gpio1 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* SW2 P1.02 Pin38 */
-            label = "Mode Switch";
-        };
-    };
-
-    /* 电池电量检测 */
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
         label = "VBATT";
-        io-channels = <&adc 7>;          /* AI7 Pin10 */
+        io-channels = <&adc 7>;
         output-ohms = <100000>;
         full-ohms = <200000>;
     };
-
-    /* 充电状态检测 */
-    charge_detect: charge_detect {
-        compatible = "gpio-keys";
-        chrg_pin: chrg_pin {
-            gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* CHRG# P0.06 Pin14 */
-            label = "Charging";
-        };
-        stdby_pin: stdby_pin {
-            gpios = <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* STDBY# P0.08 Pin16 */
-            label = "Standby";
-        };
-    };
 };
 
-/* USB */
 &usbd {
     status = "okay";
     cdc_acm_uart0: cdc_acm_uart0 {
@@ -83,17 +57,14 @@
     };
 };
 
-/* RTC 低频晶振 */
 &lfxo {
     status = "okay";
 };
 
-/* ADC */
 &adc {
     status = "okay";
 };
 
-/* GPIO */
 &gpio0 {
     status = "okay";
 };
@@ -102,12 +73,11 @@
     status = "okay";
 };
 
-/* SPI → GL5050 RGB LED */
 &spi1 {
     compatible = "nordic,nrf-spim";
     status = "okay";
-    mosi-pin = <26>;  /* P0.26 Pin12 → GL5050 DIN */
-    sck-pin  = <99>;  /* 虚拟，单总线不需要 SCK */
+    mosi-pin = <26>;
+    sck-pin  = <99>;
     cs-gpios = <>;
 
     led_strip: ws2812@0 {
@@ -124,7 +94,6 @@
     };
 };
 
-/* Flash 分区 */
 &flash0 {
     partitions {
         compatible = "fixed-partitions";
