@@ -20,4 +20,3 @@
 ---
 include:
   - board: macro8
-    cmake-args: -DCONFIG_BUILD_OUTPUT_HEX=y
