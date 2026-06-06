@@ -45,10 +45,6 @@
     };
 };
 
-&lfxo {
-    status = "okay";
-};
-
 &adc {
     status = "okay";
 };
